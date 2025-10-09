@@ -1,0 +1,154 @@
+/* 🌸 Shop Flowers Styles */
+.shop {
+  padding: 3rem 0;
+}
+
+.shop-filters {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--light-gray);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select {
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--light-gray);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--dark);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+  font-weight: 500;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%236c757d' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group select:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.1);
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+.filter-group select option {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+/* Filter results counter */
+.filter-results {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* Animation for filtered items */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+/* Filter loading state */
+.shop-filters.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* No results state */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--gray);
+}
+
+.no-results i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--light-gray);
+}
+
+/* Filter count badge */
+.filter-count {
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shop-filters {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .filter-group {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  .filter-group select {
+    padding: 0.875rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-filters {
+    padding: 1rem;
+  }
+  
+  .filter-group label {
+    font-size: 0.8rem;
+  }
+  
+  .filter-group select {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}

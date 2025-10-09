@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloom & Brew | Home</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-logo">
+        <a href="index.html">🌺 Bloom & Brew</a>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link active"
+          ><i data-feather="home"></i> Home</a
+        >
+        <a href="cafe.html" class="nav-link"
+          ><i data-feather="coffee"></i> Café Menu</a
+        >
+        <a href="shop.html" class="nav-link"
+          ><i data-feather="shopping-bag"></i> Shop Flowers</a
+        >
+        <a href="garden.html" class="nav-link"
+          ><i data-feather="map"></i> Garden Experience</a
+        >
+        <a href="gifts.html" class="nav-link"
+          ><i data-feather="gift"></i> Gifts</a
+        >
+        <a href="cart.html" class="nav-link"
+          >Cart <span id="cart-count">0</span></a
+        >
+
+        <!-- Only the dropdown - no standalone Profile link -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle nav-link">
+            <i data-feather="user"></i> Account
+          </div>
+          <div class="dropdown-menu" id="profile-dropdown">
+            <a href="profile.html" class="dropdown-item">My Profile</a>
+            <a href="orders.html" class="dropdown-item">My Orders</a>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="dropdown-item">Login</a>
+            <a href="signup.html" class="dropdown-item">Sign Up</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content" data-aos="fade-right">
+          <h1>Where Flowers Meet Flavor</h1>
+          <p>
+            Discover the perfect blend of botanical beauty and artisanal coffee
+            at Bloom & Brew.
+          </p>
+          <div class="hero-buttons">
+            <a href="shop.html" class="btn">Shop Flowers</a>
+            <a href="cafe.html" class="btn btn-secondary">View Menu</a>
+          </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            alt="Bloom & Brew Café"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Our Blooming Experiences</h2>
+        <p class="section-subtitle">
+          Discover unique ways to enjoy nature's beauty with our curated
+          experiences
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up">
+            <div class="feature-icon">
+              <i data-feather="coffee"></i>
+            </div>
+            <h3>Floral Café</h3>
+            <p>
+              Sip on our signature flower-infused beverages in a lush garden
+              setting.
+            </p>
+            <a href="cafe.html" class="feature-link"
+              >View Menu <i data-feather="arrow-right"></i
+            ></a>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon">
+              <i data-feather="shopping-bag"></i>
+            </div>
+            <h3>Flower Shop</h3>
+            <p>
+              Find the perfect bouquet or plant to bring nature's beauty into
+              your home.
+            </p>
+            <a href="shop.html" class="feature-link"
+              >Shop Now <i data-feather="arrow-right"></i
+            ></a>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon">
+              <i data-feather="map"></i>
+            </div>
+            <h3>Garden Experience</h3>
+            <p>
+              Stroll through our seasonal flower displays and photo-worthy
+              installations.
+            </p>
+            <a href="garden.html" class="feature-link"
+              >Explore Garden <i data-feather="arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-preview">
+      <div class="container">
+        <h2 class="section-title">Floral-Inspired Menu</h2>
+        <p class="section-subtitle">
+          Delicate flavors infused with nature's essence
+        </p>
+
+        <div class="product-grid">
+          <div class="product-card" data-aos="zoom-in">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Lavender Honey Latte"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Lavender Honey Latte</h3>
+              <p>Earl Grey infused with fresh lavender</p>
+              <div class="product-card-footer">
+                <span class="price">$6.50</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1464&q=80"
+                alt="Rose Petal Tea"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Rose Petal Tea</h3>
+              <p>Organic rose petals with green tea</p>
+              <div class="product-card-footer">
+                <span class="price">$5.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1559622214-5f2d5f4fca32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+                alt="Sunflower Cookie"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Sunflower Cookie</h3>
+              <p>Buttery shortbread with sunflower seeds</p>
+              <div class="product-card-footer">
+                <span class="price">$3.50</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="cafe.html" class="btn btn-secondary">View Full Menu</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="best-sellers">
+      <div class="container">
+        <h2 class="section-title">🌸 Best Sellers</h2>
+        <p class="section-subtitle">
+          Our most loved floral arrangements and café favorites
+        </p>
+
+        <div class="product-grid">
+          <div class="product-card" data-aos="zoom-in">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Rose Bouquet"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Rose Bouquet</h3>
+              <p>Classic red roses, perfect for any occasion</p>
+              <div class="product-card-footer">
+                <span class="price">$40.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1495&q=80"
+                alt="Cappuccino"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Cappuccino</h3>
+              <p>Espresso with steamed milk and foam</p>
+              <div class="product-card-footer">
+                <span class="price">$5.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27a2c5e0f5df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Gift Box"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Bloom Gift Box</h3>
+              <p>Includes flowers, coffee beans, and chocolates</p>
+              <div class="product-card-footer">
+                <span class="price">$35.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3 class="footer-logo">Bloom & Brew</h3>
+            <p class="footer-description">
+              A floral café and garden experience where nature meets
+              nourishment.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link"
+                ><i data-feather="instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i data-feather="facebook"></i
+              ></a>
+              <a href="#" class="social-link"><i data-feather="twitter"></i></a>
+              <a href="#" class="social-link"><i data-feather="youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Explore</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="cafe.html">Café Menu</a></li>
+              <li><a href="shop.html">Shop Flowers</a></li>
+              <li><a href="garden.html">Garden Experience</a></li>
+              <li><a href="gifts.html">Gifts</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Contact</h4>
+            <ul class="footer-contact">
+              <li class="contact-item">
+                <i data-feather="map-pin"></i>
+                <span>123 Flower Lane, Botanica</span>
+              </li>
+              <li class="contact-item">
+                <i data-feather="mail"></i>
+                <span>hello@bloomandbrew.com</span>
+              </li>
+              <li class="contact-item">
+                <i data-feather="phone"></i>
+                <span>(123) 456-7890</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Hours</h4>
+            <ul class="footer-hours">
+              <li class="hours-item">
+                <span>Monday - Friday</span>
+                <span>8AM - 8PM</span>
+              </li>
+              <li class="hours-item">
+                <span>Saturday</span>
+                <span>9AM - 9PM</span>
+              </li>
+              <li class="hours-item">
+                <span>Sunday</span>
+                <span>9AM - 6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © 2023 Bloom & Brew. All rights reserved.
+          </p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/config.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof AOS !== "undefined") {
+          AOS.init({
+            duration: 800,
+            easing: "ease-in-out",
+            once: true,
+          });
+        }
+
+        if (typeof feather !== "undefined") {
+          feather.replace();
+        }
+      });
+    </script>
+  </body>
+</html>
