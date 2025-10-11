@@ -26,8 +26,8 @@ backend/ — Contains server logic, routes, and configuration files.
 .env.example — Example environment variable setup.
 .gitignore — Files and folders excluded from version control.
 
-Frontend: HTML, CSS, JavaScript
-Backend: Node.js, Express.js
-Version Control: Git & GitHub
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express.js
+- Version Control: Git & GitHub
 
    
