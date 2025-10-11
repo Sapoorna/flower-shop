@@ -18,8 +18,7 @@ The website allows users to explore flower collections, add products to their ca
 3. Navigate to the project directory:cd flower-shop
 4. Navigate into the backend folder and install dependencies:cd backend,npm install
 5. Start the backend server:node server.js
-6. Open a new terminal, go to the frontend folder, and run:cd frontend,npm install,npm start
-7. Open your browser and visit: http://localhost:3000
+6. Open your browser and visit: http://localhost:5000
 
 # Included Files
 frontend/ — Contains all HTML, CSS, and JavaScript files for the user interface.
@@ -27,8 +26,8 @@ backend/ — Contains server logic, routes, and configuration files.
 .env.example — Example environment variable setup.
 .gitignore — Files and folders excluded from version control.
 
-# Frontend: HTML, CSS, JavaScript
-# Backend: Node.js, Express.js
-# Version Control: Git & GitHub
+Frontend: HTML, CSS, JavaScript
+Backend: Node.js, Express.js
+Version Control: Git & GitHub
 
    
