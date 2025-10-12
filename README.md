@@ -17,8 +17,9 @@ The website allows users to explore flower collections, add products to their ca
 2. Clone this repository:git clone https://github.com/Sapoorna/flower-shop.git
 3. Navigate to the project directory:cd flower-shop
 4. Navigate into the backend folder and install dependencies:cd backend,npm install
-5. Start the backend server:node server.js
-6. Open your browser and visit: http://localhost:5000
+5. Configure Environment Variables:Create a .env file inside the backend folder and add your environment variables:(You can check .env.example for reference.)
+6. Start the backend server:node server.js
+7. Open your browser and visit: http://localhost:5000
 
 # Included Files
 frontend/ — Contains all HTML, CSS, and JavaScript files for the user interface.
