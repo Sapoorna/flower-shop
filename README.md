@@ -14,13 +14,13 @@ The project focuses on practical learning of REST APIs and basic backend concept
 - Environment Configuration:Uses a `.env` file for environment setup.
 
 # How to Run the Application
-1: Install Node.js - Make sure Node.js is installed on your computer.
-2: Clone the Repository - git clone https://github.com/Sapoorna/flower-shop.git
-3: Open the Project Folder - cd flower-shop
-4: Install Backend Dependencies - cd backend, npm install
-5: Configure Environment Variables - Create a .env file inside the backend folder (Use .env.example as a reference (Example:PORT=5000))
-6: Start the Server - node server.js
-7: Open in Browser - Visit: http://localhost:5000
+- 1: Install Node.js - Make sure Node.js is installed on your computer.
+- 2: Clone the Repository - git clone https://github.com/Sapoorna/flower-shop.git
+- 3: Open the Project Folder - cd flower-shop
+- 4: Install Backend Dependencies - cd backend, npm install
+- 5: Configure Environment Variables - Create a .env file inside the backend folder (Use .env.example as a reference (Example:PORT=5000))
+- 6: Start the Server - node server.js
+- 7: Open in Browser - Visit: http://localhost:5000
 
 # Included Files
 frontend/ — Contains all HTML, CSS, and JavaScript files for the user interface.
