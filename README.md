@@ -1,9 +1,10 @@
 # Flower Shop Website
 
 # Project Description
-This project is a full-stack web application for an online flower shop.  
-It was developed to demonstrate practical web development skills — combining frontend design with a Node.js and Express.js backend.  
-The website allows users to explore flower collections, add products to their cart, and simulate checkout all within a visually appealing and user-friendly interface.
+This is a full-stack web application for an online flower shop.
+Developed to demonstrate frontend and backend integration using Node.js and Express.js.
+Users can browse flower products, add items to a cart, and simulate a checkout process.
+The project focuses on practical learning of REST APIs and basic backend concepts.
 
 # Key Features
 - Responsive Design:Works smoothly on desktop and mobile devices.  
@@ -13,13 +14,25 @@ The website allows users to explore flower collections, add products to their ca
 - Environment Configuration:Uses a `.env` file for environment setup.
 
 # How to Run the Application
-1. Make sure Node.js is installed on your computer.  
-2. Clone this repository:git clone https://github.com/Sapoorna/flower-shop.git
-3. Navigate to the project directory:cd flower-shop
-4. Navigate into the backend folder and install dependencies:cd backend,npm install
-5. Configure Environment Variables:Create a .env file inside the backend folder and add your environment variables:(You can check .env.example for reference.)
-6. Start the backend server:node server.js
-7. Open your browser and visit: http://localhost:5000
+Step 1: Install Node.js
+Make sure Node.js is installed on your computer.
+Step 2: Clone the Repository
+git clone https://github.com/Sapoorna/flower-shop.git
+Step 3: Open the Project Folder
+cd flower-shop
+Step 4: Install Backend Dependencies
+cd backend
+npm install
+Step 5: Configure Environment Variables
+Create a .env file inside the backend folder
+Use .env.example as a reference
+Example:
+PORT=5000
+Step 6: Start the Server
+node server.js
+Step 7: Open in Browser
+Visit:
+http://localhost:5000
 
 # Included Files
 frontend/ — Contains all HTML, CSS, and JavaScript files for the user interface.
