@@ -19,6 +19,7 @@ The project focuses on practical learning of REST APIs and basic backend concept
 - 3: Open the Project Folder - cd flower-shop
 - 4: Install Backend Dependencies - cd backend, npm install
 - 5: Configure Environment Variables - Create a .env file inside the backend folder (Use .env.example as a reference (Example:PORT=5000))
+- Please add a valid MONGO_URI in the .env file before running the server.
 - 6: Start the Server - node server.js
 - 7: Open in Browser - Visit: http://localhost:5000
 
