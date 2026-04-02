@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const CustomGift = require('../models/CustomGift');
+const CustomGift = require('../models/customGift');
 
 // POST /api/custom-gift-request
 router.post('/', async (req, res) => {
