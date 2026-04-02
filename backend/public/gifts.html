@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloom & Brew | Gifts</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/gifts.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="nav">
+      <div class="nav-logo">
+        <a href="index.html">🌺 Bloom & Brew</a>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link active"
+          ><i data-feather="home"></i> Home</a
+        >
+        <a href="cafe.html" class="nav-link"
+          ><i data-feather="coffee"></i> Café Menu</a
+        >
+        <a href="shop.html" class="nav-link"
+          ><i data-feather="shopping-bag"></i> Shop Flowers</a
+        >
+        <a href="garden.html" class="nav-link"
+          ><i data-feather="map"></i> Garden Experience</a
+        >
+        <a href="gifts.html" class="nav-link"
+          ><i data-feather="gift"></i> Gifts</a
+        >
+        <a href="cart.html" class="nav-link"
+          >Cart <span id="cart-count">0</span></a
+        >
+
+        <!-- Only the dropdown - no standalone Profile link -->
+        <div class="nav-dropdown">
+          <div class="dropdown-toggle nav-link">
+            <i data-feather="user"></i> Account
+          </div>
+          <div class="dropdown-menu" id="profile-dropdown">
+            <a href="profile.html" class="dropdown-item">My Profile</a>
+            <a href="orders.html" class="dropdown-item">My Orders</a>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="dropdown-item">Login</a>
+            <a href="signup.html" class="dropdown-item">Sign Up</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Gifts Section -->
+    <section class="gifts">
+      <div class="container">
+        <h1 class="section-title">Gift Collection</h1>
+        <p class="section-subtitle">
+          Find the perfect present — from handcrafted hampers to personalized
+          floral sets
+        </p>
+
+        <div class="category-filters">
+          <button class="category-btn active" data-category="all">
+            All Gifts
+          </button>
+          <button class="category-btn" data-category="hampers">
+            Gift Hampers
+          </button>
+          <button class="category-btn" data-category="subscriptions">
+            Subscriptions
+          </button>
+          <button class="category-btn" data-category="vouchers">
+            Gift Cards
+          </button>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card" data-category="hampers">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27a2c5e0f5df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Deluxe Hamper"
+              />
+              <div class="gift-badge">Popular</div>
+            </div>
+            <div class="product-card-content">
+              <h3>Deluxe Hamper</h3>
+              <p>Includes flowers, coffee beans, and chocolates</p>
+              <div class="product-card-footer">
+                <span class="price">$45.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="hampers">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1404&q=80"
+                alt="Bloom Box"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Bloom Box</h3>
+              <p>Elegant flowers in a beautiful gift box</p>
+              <div class="product-card-footer">
+                <span class="price">$35.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="subscriptions">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Monthly Blooms"
+              />
+              <div class="gift-badge">New</div>
+            </div>
+            <div class="product-card-content">
+              <h3>Monthly Blooms</h3>
+              <p>Fresh flowers delivered monthly for 3 months</p>
+              <div class="product-card-footer">
+                <span class="price">$85.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="vouchers">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+                alt="Gift Voucher"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Gift Voucher</h3>
+              <p>Perfect for those who love choices</p>
+              <div class="product-card-footer">
+                <div class="voucher-options">
+                  <select class="voucher-amount">
+                    <option value="20">$20.00</option>
+                    <option value="50">$50.00</option>
+                    <option value="100">$100.00</option>
+                    <option value="custom">Custom Amount</option>
+                  </select>
+                </div>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="hampers">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1487070218839-94e5a2d6e7cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Coffee Lover's Set"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Coffee Lover's Set</h3>
+              <p>Premium coffee beans with floral-infused syrups</p>
+              <div class="product-card-footer">
+                <span class="price">$38.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="subscriptions">
+            <div class="product-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1597848212624-e9f647dfe15a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Seasonal Subscription"
+              />
+            </div>
+            <div class="product-card-content">
+              <h3>Seasonal Subscription</h3>
+              <p>Quarterly floral arrangements celebrating each season</p>
+              <div class="product-card-footer">
+                <span class="price">$120.00</span>
+                <button class="btn btn-sm add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift-message">
+          <h2>Need a Custom Gift?</h2>
+          <p>
+            We specialize in creating personalized gift arrangements for special
+            occasions.
+          </p>
+          <button class="btn btn-secondary" onclick="openCustomGiftModal()">
+            Request Custom Gift
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Gift Modal -->
+    <div class="modal" id="customGiftModal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h3>Custom Gift Request</h3>
+        <p>
+          Tell us about your custom gift needs and we'll get back to you within
+          24 hours.
+        </p>
+        <form class="modal-form" id="customGiftForm">
+          <div class="form-group">
+            <label for="custom-name">Your Name</label>
+            <input type="text" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <label for="custom-email">Your Email</label>
+            <input type="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <label for="custom-occasion">Select Occasion</label>
+            <select id="custom-occasion" name="occasion" required>
+              <option value="">Select Occasion</option>
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="wedding">Wedding</option>
+              <option value="corporate">Corporate Gift</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="custom-message"
+              >"Tell us about your custom gift requirements..."</label
+            >
+            <textarea
+              id="custom-message"
+              name="message"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Submit Request</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3 class="footer-logo">Bloom & Brew</h3>
+            <p class="footer-description">
+              A floral café and garden experience where nature meets
+              nourishment.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link"
+                ><i data-feather="instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i data-feather="facebook"></i
+              ></a>
+              <a href="#" class="social-link"><i data-feather="twitter"></i></a>
+              <a href="#" class="social-link"><i data-feather="youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Explore</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="cafe.html">Café Menu</a></li>
+              <li><a href="shop.html">Shop Flowers</a></li>
+              <li><a href="garden.html">Garden Experience</a></li>
+              <li><a href="gifts.html">Gifts</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Contact</h4>
+            <ul class="footer-contact">
+              <li class="contact-item">
+                <i data-feather="map-pin"></i>
+                <span>123 Flower Lane, Botanica</span>
+              </li>
+              <li class="contact-item">
+                <i data-feather="mail"></i>
+                <span>hello@bloomandbrew.com</span>
+              </li>
+              <li class="contact-item">
+                <i data-feather="phone"></i>
+                <span>(123) 456-7890</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-title">Hours</h4>
+            <ul class="footer-hours">
+              <li class="hours-item">
+                <span>Monday - Friday</span>
+                <span>8AM - 8PM</span>
+              </li>
+              <li class="hours-item">
+                <span>Saturday</span>
+                <span>9AM - 9PM</span>
+              </li>
+              <li class="hours-item">
+                <span>Sunday</span>
+                <span>9AM - 6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © 2023 Bloom & Brew. All rights reserved.
+          </p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gifts.js"></script>
+    <script src="js/config.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof feather !== "undefined") {
+          feather.replace();
+        }
+      });
+    </script>
+  </body>
+</html>
