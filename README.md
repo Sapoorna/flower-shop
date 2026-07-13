@@ -6,7 +6,8 @@ Developed to demonstrate frontend and backend integration using Node.js and Expr
 Users can browse flower products, add items to a cart, and simulate a checkout process.
 The project focuses on practical learning of REST APIs and basic backend concepts.
 
-# Live demo: view(https://flower-shop-grvz.onrender.com/)
+## Live Demo
+👉 [View Live Website](https://flower-shop-grvz.onrender.com/)
 
 # Key Features
 - Responsive Design:Works smoothly on desktop and mobile devices.  
