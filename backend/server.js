@@ -12,6 +12,27 @@ const passport = require('./config/passport'); // ✅ NEW
 // Load environment variables
 dotenv.config();
 
+// Connect to MongoDB
+connectDB();
+
+// ✅ Session middleware (required for OAuth)
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your_session_secret_here',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000
+  }
+}));
+
+// ✅ Passport middleware - MUST be before routes
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ✅ THEN API Routes
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 const app = express();
 
 // Connect to MongoDB
