@@ -1,96 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Authenticating...</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f5f5f5;
-    }
-    .container {
-      text-align: center;
-      padding: 3rem 4rem;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      max-width: 400px;
-    }
-    .logo {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .spinner {
-      width: 48px;
-      height: 48px;
-      border: 4px solid #e0e0e0;
-      border-top: 4px solid #4A90E2;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 1.5rem auto;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    h2 {
-      color: #2d3748;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-    }
-    p {
-      color: #718096;
-      font-size: 0.95rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="logo">🌺</div>
-    <h2>Authenticating...</h2>
-    <p>Please wait while we log you in.</p>
-    <div class="spinner"></div>
-  </div>
-
-  <script>
-    // Get token and user from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
-    const userParam = urlParams.get('user');
-
-    if (token && userParam) {
-      try {
-        const user = JSON.parse(decodeURIComponent(userParam));
-        localStorage.setItem('token', token);
-        localStorage.setItem('loggedInUser', JSON.stringify(user));
-        
-        // Redirect to profile
-        setTimeout(() => {
-          window.location.href = 'profile.html';
-        }, 1500);
-      } catch (error) {
-        console.error('Auth error:', error);
-        window.location.href = 'login.html?error=auth_failed';
-      }
-    } else {
-      // Check for error in URL
-      const error = urlParams.get('error');
-      if (error) {
-        window.location.href = `login.html?error=${error}`;
-      } else {
-        window.location.href = 'login.html?error=no_token';
-      }
-    }
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Floré café and botanicals. Discover flowers, thoughtful gifts and your next favourite cup."
+    />
+    <meta name="theme-color" content="#243d32" />
+    <title>Signing in | Floré</title>
+    <link rel="icon" href="/images/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/css/store.css?v=5" />
+    <script src="/js/store.js?v=4" defer></script>
+  </head>
+  <body data-page="auth-callback">
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="announcement">
+      Flowers, coffee & the art of slowing down <span>Made for little moments.</span>
+    </div>
+    <header class="site-header">
+      <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="/" data-nav="index">Home</a>
+        <a href="/shop.html" data-nav="shop">Flowers</a>
+        <a href="/cafe.html" data-nav="cafe">The café</a>
+        <a href="/gifts.html" data-nav="gifts">Thoughtful gifts</a>
+        <a href="/garden.html" data-nav="garden">Our garden</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/login.html" id="account-link">Sign in</a>
+        <a href="/cart.html" class="bag-link" aria-label="Shopping bag"
+          >Bag <span id="bag-count">0</span>
+        </a>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-controls="navigation"
+          aria-expanded="false"
+        >
+          <span> </span>
+          <span> </span>
+        </button>
+      </div>
+    </header>
+    <main id="main">
+      <section class="section narrow">
+        <h1>Welcome to Floré.</h1>
+        <p>Your sign-in has moved to a secure session.</p>
+        <a class="button" href="/profile.html">Continue to your account</a>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-top">
+        <div>
+          <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+          <p>A fresh stem. A warm cup.<br />A little something to make your day.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <a href="/index.html">Home</a>
+          <a href="/shop.html">Flowers</a>
+          <a href="/cafe.html">The café</a>
+          <a href="/gifts.html">Thoughtful gifts</a>
+          <a href="/garden.html">Our garden</a>
+        </div>
+        <div>
+          <h3>Here to help</h3>
+          <a href="/profile.html">Your account & orders</a>
+          <a href="/gifts.html#custom">Custom requests</a>
+          <a href="/help.html">Delivery & payment</a>
+          <a href="/privacy.html">Privacy</a>
+        </div>
+        <div class="footer-note">
+          <span class="eyebrow">A NOTE FROM FLORÉ</span>
+          <p>
+            Good things take<br />
+            <em>a little growing.</em>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Floré. All rights reserved.</span></div>
+    </footer>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
 </html>

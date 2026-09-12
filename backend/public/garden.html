@@ -1,279 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Bloom & Brew | Garden Experience</title>
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/garden.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Floré café and botanicals. Discover flowers, thoughtful gifts and your next favourite cup."
+    />
+    <meta name="theme-color" content="#243d32" />
+    <title>Our garden | Floré</title>
+    <link rel="icon" href="/images/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/css/store.css?v=5" />
+    <script src="/js/store.js?v=4" defer></script>
   </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="nav">
-      <div class="nav-logo">
-        <a href="index.html">🌺 Bloom & Brew</a>
+  <body data-page="garden">
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="announcement">
+      Flowers, coffee & the art of slowing down <span>Made for little moments.</span>
+    </div>
+    <header class="site-header">
+      <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="/" data-nav="index">Home</a>
+        <a href="/shop.html" data-nav="shop">Flowers</a>
+        <a href="/cafe.html" data-nav="cafe">The café</a>
+        <a href="/gifts.html" data-nav="gifts">Thoughtful gifts</a>
+        <a href="/garden.html" data-nav="garden">Our garden</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/login.html" id="account-link">Sign in</a>
+        <a href="/cart.html" class="bag-link" aria-label="Shopping bag"
+          >Bag <span id="bag-count">0</span>
+        </a>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-controls="navigation"
+          aria-expanded="false"
+        >
+          <span> </span>
+          <span> </span>
+        </button>
       </div>
-      <div class="nav-menu">
-        <a href="index.html" class="nav-link active"
-          ><i data-feather="home"></i> Home</a
-        >
-        <a href="cafe.html" class="nav-link"
-          ><i data-feather="coffee"></i> Café Menu</a
-        >
-        <a href="shop.html" class="nav-link"
-          ><i data-feather="shopping-bag"></i> Shop Flowers</a
-        >
-        <a href="garden.html" class="nav-link"
-          ><i data-feather="map"></i> Garden Experience</a
-        >
-        <a href="gifts.html" class="nav-link"
-          ><i data-feather="gift"></i> Gifts</a
-        >
-        <a href="cart.html" class="nav-link"
-          >Cart <span id="cart-count">0</span></a
-        >
-
-        <!-- Only the dropdown - no standalone Profile link -->
-        <div class="nav-dropdown">
-          <div class="dropdown-toggle nav-link">
-            <i data-feather="user"></i> Account
-          </div>
-          <div class="dropdown-menu" id="profile-dropdown">
-            <a href="profile.html" class="dropdown-item">My Profile</a>
-            <a href="orders.html" class="dropdown-item">My Orders</a>
-            <div class="dropdown-divider"></div>
-            <a href="login.html" class="dropdown-item">Login</a>
-            <a href="signup.html" class="dropdown-item">Sign Up</a>
-          </div>
+    </header>
+    <main id="main">
+      <section class="page-intro">
+        <span class="eyebrow">A LITTLE CLOSER TO NATURE</span>
+        <h1>Good things <em>grow here.</em></h1>
+        <p>Curious hands, fresh stems and a slower pace. Explore a different side of Floré.</p>
+      </section>
+      <section class="garden-feature section">
+        <img src="/images/garden.jpg" alt="Gardening tools and plants ready for a workshop" />
+        <div>
+          <span class="eyebrow">MAKE TIME TO GROW</span>
+          <h2>
+            Get your hands<br />
+            <em>a little earthy.</em>
+          </h2>
+          <p>
+            Interested in a garden visit, a floral workshop or a group experience? Tell us your
+            preferred date and group size. We’ll get back to you with availability and pricing
+            before anything is booked.
+          </p>
+          <a class="button" href="#enquiry"
+            >Enquire about a visit <span aria-hidden="true">↗</span>
+          </a>
         </div>
-      </div>
-      <div class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
-
-    <!-- Garden Experience -->
-    <section class="garden">
-      <div class="container">
-        <h1 class="section-title">Garden Experience</h1>
-        <p class="section-subtitle">
-          Escape the city and step into our lush green sanctuary
-        </p>
-
-        <div class="garden-hero">
-          <img
-            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            alt="Garden Overview"
-          />
-          <div class="garden-hero-content">
-            <h2>Discover Our Botanical Paradise</h2>
-            <p>
-              Immerse yourself in a world of natural beauty where flowers bloom,
-              coffee aromas flow, and memories are made.
-            </p>
-            <a href="#book" class="btn">Book Your Visit</a>
-          </div>
-        </div>
-
-        <div class="garden-features">
-          <div class="garden-feature">
-            <div class="feature-icon">
-              <i data-feather="users"></i>
-            </div>
-            <h3>Guided Walks</h3>
-            <p>
-              Learn about unique plants and flowers with our expert guides.
-              Tours available daily at 10AM and 2PM.
-            </p>
-          </div>
-
-          <div class="garden-feature">
-            <div class="feature-icon">
-              <i data-feather="heart"></i>
-            </div>
-            <h3>Meditation Spots</h3>
-            <p>
-              Find peace in serene corners designed for mindfulness and
-              relaxation throughout our garden.
-            </p>
-          </div>
-
-          <div class="garden-feature">
-            <div class="feature-icon">
-              <i data-feather="book-open"></i>
-            </div>
-            <h3>Workshops</h3>
-            <p>
-              Hands-on gardening and flower-arranging sessions every weekend.
-              Perfect for all skill levels.
-            </p>
-          </div>
-        </div>
-
-        <div class="garden-gallery">
-          <h2>Garden Highlights</h2>
-          <div class="gallery-grid">
-            <div class="gallery-item">
+      </section>
+      <section class="section garden-experiences" aria-labelledby="experiences-title">
+        <span class="eyebrow">THREE WAYS TO SLOW DOWN</span>
+        <h2 id="experiences-title">Find your kind of <em>escape.</em></h2>
+        <p>Come for a quiet wander, a new discovery or a day together.</p>
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="experience-photo">
               <img
-                src="https://images.unsplash.com/photo-1590065480004-477ef6d4d5de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
-                alt="Flower Workshop"
-              />
-              <div class="gallery-caption">Floral Workshops</div>
+                src="/images/garden-path.jpg"
+                alt="A brick path winding between colourful flowers"
+                loading="lazy"
+                width="900"
+                height="675"
+              /><span>01 · EXPLORE</span>
             </div>
-            <div class="gallery-item">
-              <img
-                src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1392&q=80"
-                alt="Garden Path"
-              />
-              <div class="gallery-caption">Serene Pathways</div>
-            </div>
-            <div class="gallery-item">
-              <img
-                src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1404&q=80"
-                alt="Meditation Area"
-              />
-              <div class="gallery-caption">Meditation Spaces</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="booking-section" id="book">
-          <h2>Plan Your Visit</h2>
-          <div class="booking-options">
-            <div class="booking-card">
+            <div class="experience-content">
+              <span class="eyebrow">AT YOUR OWN PACE</span>
               <h3>General Admission</h3>
-              <p class="price">$15<span>/person</span></p>
+              <p>A quiet day among the greenery, with room to wander.</p>
               <ul>
-                <li>Garden access all day</li>
+                <li>All-day garden access</li>
                 <li>Self-guided tour map</li>
                 <li>Complimentary herbal tea</li>
               </ul>
-              <button class="btn btn-sm">Book Now</button>
+              <div class="experience-bottom">
+                <p>Pricing on enquiry <span>Quoted in LKR per person</span></p>
+                <button type="button" class="button" data-plan="General Admission">
+                  Choose this experience <span aria-hidden="true">↗</span>
+                </button>
+              </div>
             </div>
-
-            <div class="booking-card featured">
+          </article>
+          <article class="experience-card">
+            <div class="experience-photo">
+              <img
+                src="/images/garden.jpg"
+                alt="Plants and gardening tools arranged for a hands-on session"
+                loading="lazy"
+                width="900"
+                height="675"
+              /><span>02 · DISCOVER</span>
+            </div>
+            <div class="experience-content">
+              <span class="eyebrow">A LITTLE MORE DISCOVERY</span>
               <h3>Guided Experience</h3>
-              <p class="price">$35<span>/person</span></p>
+              <p>Look a little closer, with a host to bring the garden to life.</p>
               <ul>
-                <li>Expert-guided tour</li>
-                <li>Floral arranging demo</li>
-                <li>Gourmet coffee & pastry</li>
-                <li>10% shop discount</li>
+                <li>Expert-guided garden tour</li>
+                <li>Floral arranging demonstration</li>
+                <li>Coffee and a pastry</li>
               </ul>
-              <button class="btn btn-sm">Book Now</button>
+              <div class="experience-bottom">
+                <p>Pricing on enquiry <span>Quoted in LKR per person</span></p>
+                <button type="button" class="button" data-plan="Guided Experience">
+                  Choose this experience <span aria-hidden="true">↗</span>
+                </button>
+              </div>
             </div>
-
-            <div class="booking-card">
+          </article>
+          <article class="experience-card">
+            <div class="experience-photo">
+              <img
+                src="/images/cafe.jpg"
+                alt="A welcoming café setting for spending time together"
+                loading="lazy"
+                width="900"
+                height="675"
+              /><span>03 · GATHER</span>
+            </div>
+            <div class="experience-content">
+              <span class="eyebrow">BETTER TOGETHER</span>
               <h3>Group Visit</h3>
-              <p class="price">$12<span>/person</span></p>
+              <p>Make space for good company and a shared change of pace.</p>
               <ul>
-                <li>Groups of 6+ people</li>
+                <li>Groups of six or more</li>
                 <li>Private garden area</li>
-                <li>Customizable experience</li>
+                <li>A tailored group experience</li>
               </ul>
-              <button class="btn btn-sm">Book Now</button>
+              <div class="experience-bottom">
+                <p>Pricing on enquiry <span>Quoted in LKR for your group</span></p>
+                <button type="button" class="button" data-plan="Group Visit">
+                  Choose this experience <span aria-hidden="true">↗</span>
+                </button>
+              </div>
             </div>
-          </div>
+          </article>
         </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <h3 class="footer-logo">Bloom & Brew</h3>
-            <p class="footer-description">
-              A floral café and garden experience where nature meets
-              nourishment.
-            </p>
-            <div class="footer-social">
-              <a href="#" class="social-link"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a href="#" class="social-link"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a href="#" class="social-link"><i data-feather="twitter"></i></a>
-              <a href="#" class="social-link"><i data-feather="youtube"></i></a>
-            </div>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Explore</h4>
-            <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="cafe.html">Café Menu</a></li>
-              <li><a href="shop.html">Shop Flowers</a></li>
-              <li><a href="garden.html">Garden Experience</a></li>
-              <li><a href="gifts.html">Gifts</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Contact</h4>
-            <ul class="footer-contact">
-              <li class="contact-item">
-                <i data-feather="map-pin"></i>
-                <span>123 Flower Lane, Botanica</span>
-              </li>
-              <li class="contact-item">
-                <i data-feather="mail"></i>
-                <span>hello@bloomandbrew.com</span>
-              </li>
-              <li class="contact-item">
-                <i data-feather="phone"></i>
-                <span>(123) 456-7890</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Hours</h4>
-            <ul class="footer-hours">
-              <li class="hours-item">
-                <span>Monday - Friday</span>
-                <span>8AM - 8PM</span>
-              </li>
-              <li class="hours-item">
-                <span>Saturday</span>
-                <span>9AM - 9PM</span>
-              </li>
-              <li class="hours-item">
-                <span>Sunday</span>
-                <span>9AM - 6PM</span>
-              </li>
-            </ul>
-          </div>
+        <p class="fine-print">
+          Pricing, availability and inclusions are confirmed before booking. Images set the mood for
+          each experience.
+        </p>
+      </section>
+      <section class="section narrow garden-enquiry">
+        <form id="request-form" class="panel">
+          <h2 id="enquiry" tabindex="-1">Plan a little escape.</h2>
+          <input type="hidden" name="experience" value="General Admission" />
+          <p id="chosen-experience" role="status">Selected experience: General Admission</p>
+          <label
+            >Your name<input
+              name="name"
+              required
+              minlength="2"
+              maxlength="100"
+              autocomplete="name"
+            />
+          </label>
+          <label
+            >Email address<input name="email" type="email" required autocomplete="email" />
+          </label>
+          <label
+            >Your visit<textarea
+              name="description"
+              rows="4"
+              required
+              minlength="10"
+              maxlength="2000"
+              placeholder="Preferred date, number of guests and what you would like to experience"
+            ></textarea>
+          </label>
+          <p class="form-message" role="status"></p>
+          <button class="button" type="submit">
+            Send enquiry <span aria-hidden="true">↗</span>
+          </button>
+          <p class="fine-print">Visits are subject to confirmation. No payment is taken.</p>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-top">
+        <div>
+          <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+          <p>A fresh stem. A warm cup.<br />A little something to make your day.</p>
         </div>
-
-        <div class="footer-bottom">
-          <p class="footer-copyright">
-            © 2023 Bloom & Brew. All rights reserved.
+        <div>
+          <h3>Explore</h3>
+          <a href="/index.html">Home</a>
+          <a href="/shop.html">Flowers</a>
+          <a href="/cafe.html">The café</a>
+          <a href="/gifts.html">Thoughtful gifts</a>
+          <a href="/garden.html">Our garden</a>
+        </div>
+        <div>
+          <h3>Here to help</h3>
+          <a href="/profile.html">Your account & orders</a>
+          <a href="/gifts.html#custom">Custom requests</a>
+          <a href="/help.html">Delivery & payment</a>
+          <a href="/privacy.html">Privacy</a>
+        </div>
+        <div class="footer-note">
+          <span class="eyebrow">A NOTE FROM FLORÉ</span>
+          <p>
+            Good things take<br />
+            <em>a little growing.</em>
           </p>
-          <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Accessibility</a>
-          </div>
         </div>
       </div>
+      <div class="footer-bottom"><span>© 2026 Floré. All rights reserved.</span></div>
     </footer>
-
-    <script src="js/main.js"></script>
-    <script src="js/garden.js"></script>
-    <script src="js/config.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof feather !== "undefined") {
-          feather.replace();
-        }
-      });
-    </script>
+    <div id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
