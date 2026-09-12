@@ -1,78 +1,36 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
-const UserSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: [true, 'First name is required'],
-    trim: true,
-    minlength: [2, 'First name must be at least 2 characters']
+const schema = new mongoose.Schema(
+  {
+    firstName: { type: String, required: true, trim: true, maxlength: 60 },
+    lastName: { type: String, default: '', trim: true, maxlength: 60 },
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    password: { type: String, select: false },
+    phone: { type: String, default: '', maxlength: 25 },
+    googleId: { type: String, sparse: true, unique: true },
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    tokenVersion: { type: Number, default: 0 },
+    resetHash: { type: String, select: false },
+    resetExpires: { type: Date, select: false },
+    lastLogin: Date
   },
-  lastName: {
-    type: String,
-    required: [true, 'Last name is required'],
-    trim: true,
-    minlength: [2, 'Last name must be at least 2 characters']
-  },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
-    unique: true,
-    trim: true,
-    lowercase: true,
-    match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email']
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required'],
-    minlength: [8, 'Password must be at least 8 characters']
-  },
-  phone: {
-    type: String,
-    trim: true,
-    default: ''
-  },
-  role: {
-    type: String,
-    enum: ['user', 'admin'],
-    default: 'user'
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  lastLogin: {
-    type: Date
-  }
-}, {
-  timestamps: true
+  { timestamps: true }
+);
+schema.pre('save', async function () {
+  if (this.isModified('password') && this.password)
+    this.password = await bcrypt.hash(this.password, 12);
 });
-
-//  Hash password before saving
-UserSchema.pre('save', async function(next) {
-  // Only hash if password is modified
-  if (!this.isModified('password')) return next();
-  
-  try {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (error) {
-    next(error);
-  }
-});
-
-//  Method to compare password
-UserSchema.methods.comparePassword = async function(candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+schema.methods.comparePassword = async function (value) {
+  return Boolean(this.password) && bcrypt.compare(value, this.password);
 };
-
-//  Method to return user without password
-UserSchema.methods.toJSON = function() {
-  const user = this.toObject();
-  delete user.password;
-  delete user.__v;
-  return user;
+schema.methods.toJSON = function () {
+  return {
+    _id: this.id,
+    firstName: this.firstName,
+    lastName: this.lastName,
+    email: this.email,
+    phone: this.phone,
+    createdAt: this.createdAt
+  };
 };
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', schema);

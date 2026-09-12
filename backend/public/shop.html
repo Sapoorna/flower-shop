@@ -1,287 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Bloom & Brew | Shop Flowers</title>
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/shop.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Floré café and botanicals. Discover flowers, thoughtful gifts and your next favourite cup."
+    />
+    <meta name="theme-color" content="#243d32" />
+    <title>Flowers | Floré</title>
+    <link rel="icon" href="/images/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/css/store.css?v=5" />
+    <script src="/js/store.js?v=4" defer></script>
   </head>
-  <body>
-    <nav class="nav">
-      <div class="nav-logo">
-        <a href="index.html">🌺 Bloom & Brew</a>
+  <body data-page="shop">
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="announcement">
+      Flowers, coffee & the art of slowing down <span>Made for little moments.</span>
+    </div>
+    <header class="site-header">
+      <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="/" data-nav="index">Home</a>
+        <a href="/shop.html" data-nav="shop">Flowers</a>
+        <a href="/cafe.html" data-nav="cafe">The café</a>
+        <a href="/gifts.html" data-nav="gifts">Thoughtful gifts</a>
+        <a href="/garden.html" data-nav="garden">Our garden</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/login.html" id="account-link">Sign in</a>
+        <a href="/cart.html" class="bag-link" aria-label="Shopping bag"
+          >Bag <span id="bag-count">0</span>
+        </a>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-controls="navigation"
+          aria-expanded="false"
+        >
+          <span> </span>
+          <span> </span>
+        </button>
       </div>
-      <div class="nav-menu">
-        <a href="index.html" class="nav-link active"
-          ><i data-feather="home"></i> Home</a
-        >
-        <a href="cafe.html" class="nav-link"
-          ><i data-feather="coffee"></i> Café Menu</a
-        >
-        <a href="shop.html" class="nav-link"
-          ><i data-feather="shopping-bag"></i> Shop Flowers</a
-        >
-        <a href="garden.html" class="nav-link"
-          ><i data-feather="map"></i> Garden Experience</a
-        >
-        <a href="gifts.html" class="nav-link"
-          ><i data-feather="gift"></i> Gifts</a
-        >
-        <a href="cart.html" class="nav-link"
-          >Cart <span id="cart-count">0</span></a
-        >
-
-        <!-- Only the dropdown - no standalone Profile link -->
-        <div class="nav-dropdown">
-          <div class="dropdown-toggle nav-link">
-            <i data-feather="user"></i> Account
-          </div>
-          <div class="dropdown-menu" id="profile-dropdown">
-            <a href="profile.html" class="dropdown-item">My Profile</a>
-            <a href="orders.html" class="dropdown-item">My Orders</a>
-            <div class="dropdown-divider"></div>
-            <a href="login.html" class="dropdown-item">Login</a>
-            <a href="signup.html" class="dropdown-item">Sign Up</a>
+    </header>
+    <main id="main">
+      <section class="page-intro">
+        <span class="eyebrow">STEMS WITH SOMETHING TO SAY</span>
+        <h1>Let something <em>lovely bloom.</em></h1>
+        <p>
+          From a thoughtful gesture to a just-because bouquet. Find the flowers that feel like you.
+        </p>
+      </section>
+      <section class="section catalog-section">
+        <div class="catalog-tools">
+          <div id="filters" class="chips" role="group" aria-label="Product categories"></div>
+          <label class="search-box">
+            <span class="sr-only">Search products</span>
+            <input id="search" type="search" placeholder="Find something lovely…" maxlength="100" />
+            <span aria-hidden="true">⌕</span>
+          </label>
+        </div>
+        <div class="catalog-meta">
+          <span id="result-count" role="status"> </span>
+          <div id="sort-options" class="sort-options" role="group" aria-label="Sort products">
+            <span>Sort</span>
+            <button data-sort="featured" class="active" aria-pressed="true">Our picks</button>
+            <button data-sort="low" aria-pressed="false">Price ↑</button>
+            <button data-sort="high" aria-pressed="false">Price ↓</button>
           </div>
         </div>
-      </div>
-      <div class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
-
-    <section class="shop">
-      <div class="container">
-        <h1 class="section-title">Shop Flowers</h1>
-        <p class="section-subtitle">Handpicked blooms delivered with love</p>
-
-        <div class="shop-filters">
-          <div class="filter-group">
-            <label for="category-filter">Category</label>
-            <select id="category-filter">
-              <option value="all">All Flowers</option>
-              <option value="roses">Roses</option>
-              <option value="tulips">Tulips</option>
-              <option value="lilies">Lilies</option>
-              <option value="seasonal">Seasonal</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label for="sort-filter">Sort by</label>
-            <select id="sort-filter">
-              <option value="popular">Popular</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="newest">Newest</option>
-            </select>
-          </div>
+        <div id="product-grid" class="product-grid" aria-live="polite">
+          <p class="loading">Gathering lovely things…</p>
         </div>
-
-        <div class="product-grid">
-          <div class="product-card" data-category="roses">
-            <div class="product-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                alt="Roses"
-              />
-              <div class="product-badge">Best Seller</div>
-            </div>
-            <div class="product-card-content">
-              <h3>Roses Bouquet</h3>
-              <p>Classic red roses, perfect for any occasion</p>
-              <div class="product-card-footer">
-                <span class="price">$20.00</span>
-                <button class="btn btn-sm add-to-cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-category="tulips">
-            <div class="product-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1520763185298-1b434c919102?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
-                alt="Tulips"
-              />
-            </div>
-            <div class="product-card-content">
-              <h3>Tulips Bouquet</h3>
-              <p>Bright and cheerful tulips in various colors</p>
-              <div class="product-card-footer">
-                <span class="price">$18.00</span>
-                <button class="btn btn-sm add-to-cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-category="lilies">
-            <div class="product-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1597848212624-e9f647dfe15a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                alt="Lilies"
-              />
-            </div>
-            <div class="product-card-content">
-              <h3>Lilies Bouquet</h3>
-              <p>Elegant lilies with a beautiful fragrance</p>
-              <div class="product-card-footer">
-                <span class="price">$22.00</span>
-                <button class="btn btn-sm add-to-cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-category="seasonal">
-            <div class="product-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1487070218839-94e5a2d6e7cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                alt="Mixed Seasonal"
-              />
-              <div class="product-badge">New</div>
-            </div>
-            <div class="product-card-content">
-              <h3>Seasonal Mix</h3>
-              <p>Fresh seasonal flowers arranged beautifully</p>
-              <div class="product-card-footer">
-                <span class="price">$25.00</span>
-                <button class="btn btn-sm add-to-cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-category="roses">
-            <div class="product-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1578948856697-db91d246b7b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                alt="Pink Roses"
-              />
-            </div>
-            <div class="product-card-content">
-              <h3>Pink Roses</h3>
-              <p>Delicate pink roses symbolizing admiration</p>
-              <div class="product-card-footer">
-                <span class="price">$23.00</span>
-                <button class="btn btn-sm add-to-cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-category="seasonal">
-            <div class="product-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
-                alt="Wildflower Bouquet"
-              />
-            </div>
-            <div class="product-card-content">
-              <h3>Wildflower Bouquet</h3>
-              <p>Charming mix of wildflowers for a natural look</p>
-              <div class="product-card-footer">
-                <span class="price">$19.00</span>
-                <button class="btn btn-sm add-to-cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-top">
+        <div>
+          <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+          <p>A fresh stem. A warm cup.<br />A little something to make your day.</p>
         </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <h3 class="footer-logo">Bloom & Brew</h3>
-            <p class="footer-description">
-              A floral café and garden experience where nature meets
-              nourishment.
-            </p>
-            <div class="footer-social">
-              <a href="#" class="social-link"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a href="#" class="social-link"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a href="#" class="social-link"><i data-feather="twitter"></i></a>
-              <a href="#" class="social-link"><i data-feather="youtube"></i></a>
-            </div>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Explore</h4>
-            <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="cafe.html">Café Menu</a></li>
-              <li><a href="shop.html">Shop Flowers</a></li>
-              <li><a href="garden.html">Garden Experience</a></li>
-              <li><a href="gifts.html">Gifts</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Contact</h4>
-            <ul class="footer-contact">
-              <li class="contact-item">
-                <i data-feather="map-pin"></i>
-                <span>123 Flower Lane, Botanica</span>
-              </li>
-              <li class="contact-item">
-                <i data-feather="mail"></i>
-                <span>hello@bloomandbrew.com</span>
-              </li>
-              <li class="contact-item">
-                <i data-feather="phone"></i>
-                <span>(123) 456-7890</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Hours</h4>
-            <ul class="footer-hours">
-              <li class="hours-item">
-                <span>Monday - Friday</span>
-                <span>8AM - 8PM</span>
-              </li>
-              <li class="hours-item">
-                <span>Saturday</span>
-                <span>9AM - 9PM</span>
-              </li>
-              <li class="hours-item">
-                <span>Sunday</span>
-                <span>9AM - 6PM</span>
-              </li>
-            </ul>
-          </div>
+        <div>
+          <h3>Explore</h3>
+          <a href="/index.html">Home</a>
+          <a href="/shop.html">Flowers</a>
+          <a href="/cafe.html">The café</a>
+          <a href="/gifts.html">Thoughtful gifts</a>
+          <a href="/garden.html">Our garden</a>
         </div>
-
-        <div class="footer-bottom">
-          <p class="footer-copyright">
-            © 2023 Bloom & Brew. All rights reserved.
+        <div>
+          <h3>Here to help</h3>
+          <a href="/profile.html">Your account & orders</a>
+          <a href="/gifts.html#custom">Custom requests</a>
+          <a href="/help.html">Delivery & payment</a>
+          <a href="/privacy.html">Privacy</a>
+        </div>
+        <div class="footer-note">
+          <span class="eyebrow">A NOTE FROM FLORÉ</span>
+          <p>
+            Good things take<br />
+            <em>a little growing.</em>
           </p>
-          <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Accessibility</a>
-          </div>
         </div>
       </div>
+      <div class="footer-bottom"><span>© 2026 Floré. All rights reserved.</span></div>
     </footer>
-
-    <script src="js/main.js"></script>
-    <script src="js/shop.js"></script>
-    <script src="js/config.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof feather !== "undefined") {
-          feather.replace();
-        }
-      });
-    </script>
+    <div id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>

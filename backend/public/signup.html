@@ -1,244 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Bloom & Brew | Sign Up</title>
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/auth.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Floré café and botanicals. Discover flowers, thoughtful gifts and your next favourite cup."
+    />
+    <meta name="theme-color" content="#243d32" />
+    <title>A little more lovely. | Floré</title>
+    <link rel="icon" href="/images/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/css/store.css?v=5" />
+    <script src="/js/store.js?v=4" defer></script>
   </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="nav">
-      <div class="nav-logo">
-        <a href="index.html">🌺 Bloom & Brew</a>
+  <body data-page="signup">
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="announcement">
+      Flowers, coffee & the art of slowing down <span>Made for little moments.</span>
+    </div>
+    <header class="site-header">
+      <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="/" data-nav="index">Home</a>
+        <a href="/shop.html" data-nav="shop">Flowers</a>
+        <a href="/cafe.html" data-nav="cafe">The café</a>
+        <a href="/gifts.html" data-nav="gifts">Thoughtful gifts</a>
+        <a href="/garden.html" data-nav="garden">Our garden</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/login.html" id="account-link">Sign in</a>
+        <a href="/cart.html" class="bag-link" aria-label="Shopping bag"
+          >Bag <span id="bag-count">0</span>
+        </a>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-controls="navigation"
+          aria-expanded="false"
+        >
+          <span> </span>
+          <span> </span>
+        </button>
       </div>
-      <div class="nav-menu">
-        <a href="index.html" class="nav-link active"
-          ><i data-feather="home"></i> Home</a
-        >
-        <a href="cafe.html" class="nav-link"
-          ><i data-feather="coffee"></i> Café Menu</a
-        >
-        <a href="shop.html" class="nav-link"
-          ><i data-feather="shopping-bag"></i> Shop Flowers</a
-        >
-        <a href="garden.html" class="nav-link"
-          ><i data-feather="map"></i> Garden Experience</a
-        >
-        <a href="gifts.html" class="nav-link"
-          ><i data-feather="gift"></i> Gifts</a
-        >
-        <a href="cart.html" class="nav-link"
-          >Cart <span id="cart-count">0</span></a
-        >
-
-        <!-- Only the dropdown - no standalone Profile link -->
-        <div class="nav-dropdown">
-          <div class="dropdown-toggle nav-link">
-            <i data-feather="user"></i> Account
-          </div>
-          <div class="dropdown-menu" id="profile-dropdown">
-            <a href="profile.html" class="dropdown-item">My Profile</a>
-            <a href="orders.html" class="dropdown-item">My Orders</a>
-            <a href="login.html" class="dropdown-item">Login</a>
-            <a href="signup.html" class="dropdown-item">Sign Up</a>
+    </header>
+    <main id="main">
+      <section class="auth-layout">
+        <div class="auth-photo">
+          <img src="/images/coffee.jpg" alt="Warm coffee surrounded by greenery" />
+          <div>
+            <span class="eyebrow">YOUR DAILY DOSE OF LOVELY</span>
+            <h2>
+              A fresh stem.<br />A warm cup.<br />
+              <em>A place for you.</em>
+            </h2>
           </div>
         </div>
-      </div>
-      <div class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
-
-    <!-- Signup Section -->
-    <section class="auth">
-      <div class="container">
-        <div class="auth-container">
-          <div class="auth-header">
-            <h1><i data-feather="user-plus"></i> Create Account</h1>
-            <p>Join the Bloom & Brew community</p>
-          </div>
-
-          <form id="signup-form" class="auth-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" required />
+        <div class="auth-side">
+          <div class="auth-inner">
+            <span class="eyebrow">WELCOME TO FLORÉ</span>
+            <h1>A little more lovely.</h1>
+            <p>Make yourself at home at Floré.</p>
+            <form id="auth-form">
+              <div class="form-row">
+                <label
+                  >First name<input
+                    name="firstName"
+                    required
+                    maxlength="60"
+                    autocomplete="given-name"
+                  />
+                </label>
+                <label
+                  >Last name<input
+                    name="lastName"
+                    required
+                    maxlength="60"
+                    autocomplete="family-name"
+                  />
+                </label>
               </div>
-              <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" id="password" required />
-              <div class="password-toggle">
-                <i data-feather="eye" class="toggle-icon"></i>
-              </div>
-              <div class="password-strength">
-                <div class="strength-bar"></div>
-                <span class="strength-text">Password strength</span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="confirm-password">Confirm Password</label>
-              <input type="password" id="confirm-password" required />
-              <div class="password-toggle">
-                <i data-feather="eye" class="toggle-icon"></i>
-              </div>
-            </div>
-
-            <div class="form-options">
-              <label class="terms-agree">
-                <input type="checkbox" id="terms" required />
-                <span
-                  >I agree to the <a href="#">Terms of Service</a> and
-                  <a href="#">Privacy Policy</a></span
-                >
+              <label
+                >Email address<input name="email" type="email" required autocomplete="email" />
               </label>
-            </div>
-
-            <div class="form-options">
-              <label class="newsletter-subscribe">
-                <input type="checkbox" id="newsletter" checked />
-                <span>Subscribe to our newsletter for updates and offers</span>
+              <label
+                >Password<span class="password-wrap">
+                  <input
+                    name="password"
+                    aria-label="Password"
+                    type="password"
+                    required
+                    minlength="10"
+                    maxlength="72"
+                    autocomplete="new-password"
+                  />
+                  <button type="button" class="password-toggle" aria-label="Show password">
+                    Show
+                  </button>
+                </span>
+                <small>At least 10 characters. A longer, unique phrase works well.</small>
               </label>
+              <label
+                >Confirm password<input
+                  name="confirmPassword"
+                  type="password"
+                  required
+                  minlength="10"
+                  maxlength="72"
+                  autocomplete="new-password"
+                />
+              </label>
+              <p class="fine-print">
+                We use your details to manage your account and orders. Read our
+                <a href="/privacy.html">privacy notice</a>.
+              </p>
+              <p class="form-message" role="status"></p>
+              <button class="button full" type="submit">
+                Create account <span aria-hidden="true">→</span>
+              </button>
+            </form>
+            <div id="google-option" hidden>
+              <div class="divider">or</div>
+              <a class="button outline full" href="/api/auth/google">Continue with Google</a>
             </div>
-
-            <button type="submit" class="btn auth-btn">Create Account</button>
-          </form>
-
-          <div class="auth-divider">
-            <span>Or sign up with</span>
-          </div>
-
-          <div class="social-auth">
-            <button class="social-btn google-btn">
-              <i data-feather="mail"></i>
-              <span>Google</span>
-            </button>
-            <button class="social-btn facebook-btn">
-              <i data-feather="facebook"></i>
-              <span>Facebook</span>
-            </button>
-          </div>
-
-          <div class="auth-footer">
-            <p>
-              Already have an account? <a href="login.html">Sign in here</a>
-            </p>
+            <p class="auth-bottom">Already part of Floré? <a href="/login.html">Sign in</a></p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <h3 class="footer-logo">Bloom & Brew</h3>
-            <p class="footer-description">
-              A floral café and garden experience where nature meets
-              nourishment.
-            </p>
-            <div class="footer-social">
-              <a href="#" class="social-link"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a href="#" class="social-link"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a href="#" class="social-link"><i data-feather="twitter"></i></a>
-              <a href="#" class="social-link"><i data-feather="youtube"></i></a>
-            </div>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Explore</h4>
-            <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="cafe.html">Café Menu</a></li>
-              <li><a href="shop.html">Shop Flowers</a></li>
-              <li><a href="garden.html">Garden Experience</a></li>
-              <li><a href="gifts.html">Gifts</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Contact</h4>
-            <ul class="footer-contact">
-              <li class="contact-item">
-                <i data-feather="map-pin"></i>
-                <span>123 Flower Lane, Botanica</span>
-              </li>
-              <li class="contact-item">
-                <i data-feather="mail"></i>
-                <span>hello@bloomandbrew.com</span>
-              </li>
-              <li class="contact-item">
-                <i data-feather="phone"></i>
-                <span>(123) 456-7890</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-title">Hours</h4>
-            <ul class="footer-hours">
-              <li class="hours-item">
-                <span>Monday - Friday</span>
-                <span>8AM - 8PM</span>
-              </li>
-              <li class="hours-item">
-                <span>Saturday</span>
-                <span>9AM - 9PM</span>
-              </li>
-              <li class="hours-item">
-                <span>Sunday</span>
-                <span>9AM - 6PM</span>
-              </li>
-            </ul>
-          </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-top">
+        <div>
+          <a class="wordmark" href="/">floré<span>CAFÉ & BOTANICALS</span> </a>
+          <p>A fresh stem. A warm cup.<br />A little something to make your day.</p>
         </div>
-
-        <div class="footer-bottom">
-          <p class="footer-copyright">
-            © 2023 Bloom & Brew. All rights reserved.
+        <div>
+          <h3>Explore</h3>
+          <a href="/index.html">Home</a>
+          <a href="/shop.html">Flowers</a>
+          <a href="/cafe.html">The café</a>
+          <a href="/gifts.html">Thoughtful gifts</a>
+          <a href="/garden.html">Our garden</a>
+        </div>
+        <div>
+          <h3>Here to help</h3>
+          <a href="/profile.html">Your account & orders</a>
+          <a href="/gifts.html#custom">Custom requests</a>
+          <a href="/help.html">Delivery & payment</a>
+          <a href="/privacy.html">Privacy</a>
+        </div>
+        <div class="footer-note">
+          <span class="eyebrow">A NOTE FROM FLORÉ</span>
+          <p>
+            Good things take<br />
+            <em>a little growing.</em>
           </p>
-          <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Accessibility</a>
-          </div>
         </div>
       </div>
+      <div class="footer-bottom"><span>© 2026 Floré. All rights reserved.</span></div>
     </footer>
-
-    <script src="js/main.js"></script>
-    <script src="js/signup.js"></script>
-    <script src="js/config.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof feather !== "undefined") {
-          feather.replace();
-        }
-        updateCartCount();
-      });
-    </script>
+    <div id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>

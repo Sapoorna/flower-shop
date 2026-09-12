@@ -1,316 +1,168 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+const crypto = require('crypto');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const { authMiddleware, generateToken } = require('../middleware/auth');
-const passport = require('passport');
-
-// =============================================
-//  EMAIL/PASSWORD AUTHENTICATION
-// =============================================
-
-//  REGISTER - Create new user
-router.post('/register', async (req, res) => {
-  try {
-    const { firstName, lastName, email, password, phone } = req.body;
-    
-    // Validate required fields
-    if (!firstName || !lastName || !email || !password) {
-      return res.status(400).json({ 
-        message: 'Please provide all required fields' 
-      });
-    }
-
-    // Check if user already exists
-    const existingUser = await User.findOne({ email: email.toLowerCase() });
-    if (existingUser) {
-      return res.status(400).json({ 
-        message: 'User already exists with this email' 
-      });
-    }
-
-    // Create new user
-    const user = new User({
-      firstName: firstName.trim(),
-      lastName: lastName.trim(),
-      email: email.toLowerCase().trim(),
-      password,
-      phone: phone || ''
-    });
-
-    await user.save();
-
-    // Generate token
-    const token = generateToken(user._id);
-
-    res.status(201).json({
-      message: 'User registered successfully!',
-      token,
-      user: user.toJSON()
-    });
-
-  } catch (error) {
-    console.error('Registration error:', error);
-    
-    if (error.name === 'ValidationError') {
-      const errors = Object.values(error.errors).map(e => e.message);
-      return res.status(400).json({ 
-        message: 'Validation failed', 
-        errors 
-      });
-    }
-
-    res.status(500).json({ 
-      message: 'Server error during registration' 
-    });
-  }
+const { authMiddleware } = require('../middleware/auth');
+const {
+  text,
+  email,
+  password,
+  hash,
+  rateLimit,
+  issueSession,
+  cookieOptions
+} = require('../lib/security');
+const attempts = rateLimit(20, 15 * 60000);
+const dummyHash = bcrypt.hash('a timing-only comparison value', 12);
+router.post('/register', attempts, async (req, res) => {
+  const user = new User({
+    firstName: text(req.body.firstName, 'first name', 1, 60),
+    lastName: text(req.body.lastName, 'last name', 1, 60),
+    email: email(req.body.email),
+    password: password(req.body.password)
+  });
+  await user.save();
+  issueSession(res, user);
+  res.status(201).json({ user });
 });
-
-//  LOGIN - Authenticate user
-router.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ 
-        message: 'Email and password are required' 
-      });
-    }
-
-    const user = await User.findOne({ email: email.toLowerCase() });
-    if (!user) {
-      return res.status(401).json({ 
-        message: 'Invalid email or password' 
-      });
-    }
-
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(401).json({ 
-        message: 'Invalid email or password' 
-      });
-    }
-
-    user.lastLogin = new Date();
-    await user.save();
-
-    const token = generateToken(user._id);
-
-    res.json({
-      message: 'Login successful!',
-      token,
-      user: user.toJSON()
-    });
-
-  } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ 
-      message: 'Server error during login' 
-    });
-  }
+router.post('/login', attempts, async (req, res) => {
+  const address = email(req.body.email);
+  if (typeof req.body.password !== 'string' || req.body.password.length > 200)
+    return res.status(400).json({ message: 'Please enter a valid password.' });
+  const user = await User.findOne({ email: address }).select('+password');
+  const valid = user
+    ? await user.comparePassword(req.body.password)
+    : await bcrypt.compare(req.body.password, await dummyHash);
+  if (!user || !valid) return res.status(401).json({ message: 'Email or password is incorrect.' });
+  user.lastLogin = new Date();
+  await user.save();
+  issueSession(res, user);
+  res.json({ user });
 });
-
-//  GET CURRENT USER
-router.get('/me', authMiddleware, async (req, res) => {
-  try {
-    res.json({
-      user: req.user
-    });
-  } catch (error) {
-    console.error('Get profile error:', error);
-    res.status(500).json({ 
-      message: 'Server error fetching profile' 
-    });
-  }
-});
-
-//  UPDATE PROFILE
+router.get('/me', authMiddleware, (req, res) => res.json({ user: req.user }));
 router.put('/me', authMiddleware, async (req, res) => {
-  try {
-    const { firstName, lastName, phone } = req.body;
-    
-    const updates = {};
-    if (firstName) updates.firstName = firstName.trim();
-    if (lastName) updates.lastName = lastName.trim();
-    if (phone) updates.phone = phone.trim();
-
-    const user = await User.findByIdAndUpdate(
-      req.userId,
-      updates,
-      { new: true, runValidators: true }
-    ).select('-password');
-
-    res.json({
-      message: 'Profile updated successfully!',
-      user
-    });
-
-  } catch (error) {
-    console.error('Update profile error:', error);
-    res.status(500).json({ 
-      message: 'Server error updating profile' 
-    });
-  }
+  req.user.firstName = text(req.body.firstName, 'first name', 1, 60);
+  req.user.lastName = text(req.body.lastName, 'last name', 1, 60);
+  req.user.phone = text(req.body.phone || '', 'phone number', 0, 25);
+  await req.user.save();
+  res.json({ user: req.user, message: 'Profile updated.' });
 });
-
-//  CHANGE PASSWORD
-router.put('/change-password', authMiddleware, async (req, res) => {
+router.post('/logout', async (req, res) => {
   try {
-    const { currentPassword, newPassword } = req.body;
-
-    if (!currentPassword || !newPassword) {
-      return res.status(400).json({ 
-        message: 'Current password and new password are required' 
-      });
-    }
-
-    if (newPassword.length < 8) {
-      return res.status(400).json({ 
-        message: 'New password must be at least 8 characters' 
-      });
-    }
-
-    const user = await User.findById(req.userId);
-    
-    const isMatch = await user.comparePassword(currentPassword);
-    if (!isMatch) {
-      return res.status(401).json({ 
-        message: 'Current password is incorrect' 
-      });
-    }
-
-    user.password = newPassword;
+    const d = jwt.verify(req.cookies.flore_session, process.env.JWT_SECRET, {
+      algorithms: ['HS256']
+    });
+    await User.updateOne({ _id: d.userId, tokenVersion: d.version }, { $inc: { tokenVersion: 1 } });
+  } catch (error) {
+    if (!['JsonWebTokenError', 'TokenExpiredError'].includes(error.name)) throw error;
+  }
+  res.clearCookie('flore_session', cookieOptions());
+  res.json({ message: 'Signed out.' });
+});
+router.put('/change-password', attempts, authMiddleware, async (req, res) => {
+  const user = await User.findById(req.userId).select('+password');
+  if (
+    typeof req.body.currentPassword !== 'string' ||
+    !(await user.comparePassword(req.body.currentPassword))
+  )
+    return res.status(400).json({ message: 'Current password is incorrect.' });
+  user.password = password(req.body.newPassword);
+  user.tokenVersion = (user.tokenVersion || 0) + 1;
+  user.resetHash = undefined;
+  user.resetExpires = undefined;
+  await user.save();
+  issueSession(res, user);
+  res.json({ message: 'Password updated. Other sessions have been signed out.' });
+});
+router.post('/forgot-password', rateLimit(5, 15 * 60000), async (req, res) => {
+  const address = email(req.body.email);
+  if (!process.env.BREVO_API_KEY || !process.env.MAIL_FROM || !process.env.FRONTEND_URL)
+    return res
+      .status(503)
+      .json({ message: 'Password reset emails are not available yet. Please try again later.' });
+  const user = await User.findOne({ email: address });
+  if (user) {
+    const token = crypto.randomBytes(32).toString('hex');
+    user.resetHash = hash(token);
+    user.resetExpires = new Date(Date.now() + 30 * 60000);
     await user.save();
-
-    res.json({
-      message: 'Password changed successfully!'
-    });
-
-  } catch (error) {
-    console.error('Change password error:', error);
-    res.status(500).json({ 
-      message: 'Server error changing password' 
-    });
-  }
-});
-
-//  LOGOUT
-router.post('/logout', authMiddleware, async (req, res) => {
-  try {
-    res.json({ 
-      message: 'Logged out successfully' 
-    });
-  } catch (error) {
-    res.status(500).json({ 
-      message: 'Server error during logout' 
-    });
-  }
-});
-
-// =============================================
-//  GOOGLE OAUTH AUTHENTICATION
-// =============================================
-
-// ✅ GOOGLE LOGIN - Initialize OAuth
-router.get('/google',
-  passport.authenticate('google', { 
-    scope: ['profile', 'email'],
-    prompt: 'select_account'
-  })
-);
-
-// ✅ GOOGLE CALLBACK - After Google redirects
-router.get('/google/callback',
-  passport.authenticate('google', { 
-    failureRedirect: '/login.html?error=google_failed',
-    session: false
-  }),
-  (req, res) => {
+    const link = `${new URL(process.env.FRONTEND_URL).origin}/reset-password.html#token=${token}`;
     try {
-      // Generate JWT token
-      const token = generateToken(req.user._id);
-      
-      // Redirect to frontend with token
-      const frontendURL = process.env.FRONTEND_URL || 'http://localhost:5000';
-      res.redirect(
-        `${frontendURL}/auth-callback.html?token=${token}&user=${encodeURIComponent(JSON.stringify(req.user.toJSON()))}`
-      );
-    } catch (error) {
-      console.error('Google callback error:', error);
-      res.redirect('/login.html?error=server_error');
-    }
-  }
-);
-
-// ✅ GOOGLE TOKEN - Alternative flow for frontend
-router.post('/google-token', async (req, res) => {
-  try {
-    const { googleToken } = req.body;
-    
-    if (!googleToken) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Google token is required' 
+      const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        signal: AbortSignal.timeout(15000),
+        headers: { 'Content-Type': 'application/json', 'api-key': process.env.BREVO_API_KEY },
+        body: JSON.stringify({
+          sender: { name: 'Floré', email: process.env.MAIL_FROM },
+          to: [{ email: address }],
+          subject: 'Reset your Floré password',
+          textContent: `Use this link to reset your password: ${link}\nThis link expires in 30 minutes and can be used once. If you did not request this, ignore this email.`
+        })
       });
+      if (!response.ok) throw new Error('Mail provider rejected request');
+    } catch {
+      await User.updateOne(
+        { _id: user.id, resetHash: hash(token) },
+        { $unset: { resetHash: 1, resetExpires: 1 } }
+      );
+      console.error('Password reset email delivery failed. Check email provider configuration.');
     }
-
-    // Verify Google token
-    const { OAuth2Client } = require('google-auth-library');
-    const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-    
-    const ticket = await client.verifyIdToken({
-      idToken: googleToken,
-      audience: process.env.GOOGLE_CLIENT_ID
-    });
-    
-    const payload = ticket.getPayload();
-    const { email, given_name, family_name, picture, sub: googleId } = payload;
-    
-    // Find or create user
-    let user = await User.findOne({ googleId });
-    
-    if (!user) {
-      // Check if user exists by email (link Google account)
-      user = await User.findOne({ email });
-      if (user) {
-        // Link Google account to existing user
-        user.googleId = googleId;
-        user.profilePicture = picture || user.profilePicture;
-        await user.save();
-      } else {
-        // Create new user
-        user = new User({
-          firstName: given_name || '',
-          lastName: family_name || '',
-          email: email,
-          password: Math.random().toString(36).slice(-16),
-          googleId: googleId,
-          profilePicture: picture || '',
-          emailVerified: true,
-          lastLogin: new Date()
-        });
-        await user.save();
-      }
-    } else {
-      // Update last login
-      user.lastLogin = new Date();
-      if (picture) user.profilePicture = picture;
-      await user.save();
-    }
-    
-    const token = generateToken(user._id);
-    res.json({
-      success: true,
-      token,
-      user: user.toJSON()
-    });
-    
-  } catch (error) {
-    console.error('Google token error:', error);
-    res.status(401).json({ 
-      success: false, 
-      message: 'Invalid Google token' 
-    });
   }
+  res.json({
+    message:
+      'If an account matches that email, a reset link will arrive shortly. Check your spam folder too.'
+  });
 });
-
+router.post('/reset-password', attempts, async (req, res) => {
+  const token = text(req.body.token, 'reset link', 64, 64);
+  const encoded = await bcrypt.hash(password(req.body.password), 12);
+  const user = await User.findOneAndUpdate(
+    { resetHash: hash(token), resetExpires: { $gt: new Date() } },
+    {
+      $set: { password: encoded },
+      $inc: { tokenVersion: 1 },
+      $unset: { resetHash: 1, resetExpires: 1 }
+    },
+    { new: true }
+  );
+  if (!user)
+    return res
+      .status(400)
+      .json({ message: 'This reset link is invalid or expired. Please request another.' });
+  res.clearCookie('flore_session', cookieOptions());
+  res.json({ message: 'Password reset. You can now sign in.' });
+});
+const passport = require('../config/passport');
+router.use(passport.initialize());
+router.get('/google', attempts, (req, res, next) => {
+  if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET)
+    return res.redirect('/login.html?error=google_unavailable');
+  const state = crypto.randomBytes(32).toString('hex');
+  res.cookie('flore_oauth', jwt.sign({ state }, process.env.JWT_SECRET, { expiresIn: '10m' }), {
+    ...cookieOptions(),
+    maxAge: 600000
+  });
+  passport.authenticate('google', { scope: ['profile', 'email'], session: false, state })(
+    req,
+    res,
+    next
+  );
+});
+router.get('/google/callback', (req, res, next) => {
+  try {
+    const d = jwt.verify(req.cookies.flore_oauth, process.env.JWT_SECRET, {
+      algorithms: ['HS256']
+    });
+    if (d.state !== req.query.state) throw Error();
+  } catch {
+    return res.redirect('/login.html?error=google_failed');
+  }
+  res.clearCookie('flore_oauth', cookieOptions());
+  passport.authenticate('google', { session: false }, (err, user) => {
+    if (err || !user) return res.redirect('/login.html?error=google_failed');
+    issueSession(res, user);
+    res.redirect('/profile.html');
+  })(req, res, next);
+});
 module.exports = router;

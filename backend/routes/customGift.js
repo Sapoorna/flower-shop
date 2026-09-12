@@ -1,18 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const CustomGift = require('../models/customGift');
-
-// POST /api/custom-gift-request
+const router = require('express').Router();
+const Gift = require('../models/customGift');
+const { text, email } = require('../lib/security');
 router.post('/', async (req, res) => {
-  try {
-    const { name, email, description } = req.body;
-    const newGift = new CustomGift({ name, email, description });
-    await newGift.save();
-    res.status(201).json({ message: 'Custom gift saved successfully!' });
-  } catch (err) {
-    console.error('Error saving custom gift:', err);
-    res.status(500).json({ message: 'Failed to save custom gift' });
-  }
+  await Gift.create({
+    name: text(req.body.name, 'name', 2, 100),
+    email: email(req.body.email),
+    description: text(req.body.description, 'request details', 10, 2000)
+  });
+  res.status(201).json({ message: 'Your request has been received. We will reply by email.' });
 });
-
 module.exports = router;
