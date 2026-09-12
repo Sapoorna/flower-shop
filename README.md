@@ -1,4 +1,4 @@
-# Floré — Café & Botanicals
+# Floré - Café & Botanicals
 
 A mobile-friendly website for flowers, café favourites, gifts and garden experiences. Built with HTML, CSS, JavaScript, Node.js, Express and MongoDB.
 
