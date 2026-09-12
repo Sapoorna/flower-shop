@@ -1,35 +1,35 @@
-# Flower Shop Website
+# Floré — Café & Botanicals
 
-# Project Description
-This is a full-stack web application for an online flower shop.
-Developed to demonstrate frontend and backend integration using Node.js and Express.js.
-Users can browse flower products, add items to a cart, and simulate a checkout process.
-The project focuses on practical learning of REST APIs and basic backend concepts.
+A mobile-friendly website for flowers, café favourites, gifts and garden experiences. Built with HTML, CSS, JavaScript, Node.js, Express and MongoDB.
 
-# Key Features
-- Responsive Design:Works smoothly on desktop and mobile devices.  
-- Shopping Cart:Add, remove, and view products in the cart.  
-- Product Display:Beautifully arranged flower items with images and descriptions.  
-- Simple Backend:Handles routes and product data with Express.js.  
-- Environment Configuration:Uses a `.env` file for environment setup.
+## Features
 
-# How to Run the Application
-- 1: Install Node.js - Make sure Node.js is installed on your computer.
-- 2: Clone the Repository - git clone https://github.com/Sapoorna/flower-shop.git
-- 3: Open the Project Folder - cd flower-shop
-- 4: Install Backend Dependencies - cd backend, npm install
-- 5: Configure Environment Variables - Create a .env file inside the backend folder (Use .env.example as a reference (Example:PORT=5000))
-- 6: Start the Server - node server.js
-- 7: Open in Browser - Visit: http://localhost:5000
+- Product photos, search, filters and quantity controls.
+- Shopping bag and cash-on-delivery checkout in LKR.
+- Signup, password login, profiles and order history.
+- Three garden experience cards and custom enquiries.
+- Card payments displayed but disabled.
 
-# Included Files
-frontend/ — Contains all HTML, CSS, and JavaScript files for the user interface.
-backend/ — Contains server logic, routes, and configuration files.
-.env.example — Example environment variable setup.
-.gitignore — Files and folders excluded from version control.
+## Run locally
 
-- Frontend: HTML, CSS, JavaScript
-- Backend: Node.js, Express.js
-- Version Control: Git & GitHub
+Install Node.js 22 or newer. Create `backend/.env` using `backend/.env.example`, then enter your MongoDB connection and a private JWT secret. For local use, set `NODE_ENV=development`, `PORT=5000` and `FRONTEND_URL=http://localhost:5000`.
 
-   
+From the project folder:
+
+```sh
+cd backend
+npm ci
+npm start
+```
+
+On Windows, use `npm.cmd` instead of `npm` if PowerShell reports an npm error. Open http://localhost:5000 and keep the terminal open. Press Ctrl+C to stop.
+
+## Project files
+
+- `backend/public/` — pages, images and fonts.
+- `backend/public/css/store.css` — shared styling.
+- `backend/public/js/store.js` — shared browser behaviour.
+- `backend/public/catalog.json` — products, LKR prices and delivery fee.
+- `backend/routes/` and `backend/models/` — API and database logic.
+
+Review prices and delivery arrangements before accepting real orders. Garden enquiries need confirmation; no booking payment is collected. See `ASSETS.md` for photo credits and `PROJECT_GUIDE.md` for technical details.
