@@ -31,5 +31,3 @@ On Windows, use `npm.cmd` instead of `npm` if PowerShell reports an npm error. O
 - `backend/public/js/store.js` — shared browser behaviour.
 - `backend/public/catalog.json` — products, LKR prices and delivery fee.
 - `backend/routes/` and `backend/models/` — API and database logic.
-
-Review prices and delivery arrangements before accepting real orders. Garden enquiries need confirmation; no booking payment is collected. See `ASSETS.md` for photo credits and `PROJECT_GUIDE.md` for technical details.
